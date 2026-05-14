@@ -1,6 +1,6 @@
 /**
- * Student Numbers: XXXXXXXXX, XXXXXXXXX, XXXXXXXXX, XXXXXXXXX, XXXXXXXXX
- * Student Names  : [Group Member Names Here]
+ * Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
+ * Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
  * Question: Student Home Screen (Read Operation)
  */
 

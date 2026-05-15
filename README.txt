@@ -52,7 +52,7 @@ bashflutter pub get
 flutter run
 
 # Repository
-github.com/LebohangMosoetsa/GROUP_A
+https://github.com/LebohangMosoetsa/GROUP_A.git
 
 # Submission
 Zipped project folder: GROUP_A.zip

@@ -40,7 +40,7 @@ lib/
 └── main.dart
 
 # Concepts Applied (Units 1–5)
-UnitConceptImplementationUnit 1UI DesignFlutter widgets, responsive layoutsUnit 2MVVM & ProviderChangeNotifier, Consumer, ChangeNotifierProviderUnit 3Routing & NavigationNamed routes, role-based navigationUnit 4Form Handling & ValidationForm, GlobalKey, validator callbacks Unit 5 Supabase Auth & CRUD signIn, signUp, select, insert, update, delete
+Unit Concept Implementation Unit 1 UI Design Flutter widgets, responsive layoutsUnit 2MVVM & ProviderChangeNotifier, Consumer, ChangeNotifierProvider Unit 3 Routing & NavigationNamed routes, role-based navigationUnit 4 Form Handling & ValidationForm, GlobalKey, validator callbacks Unit 5 Supabase Auth & CRUD signIn, signUp, select, insert, update, delete
 
 # Getting Started
 # Prerequisites

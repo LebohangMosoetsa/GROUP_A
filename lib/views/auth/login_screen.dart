@@ -1,14 +1,15 @@
 /**
- * Student Numbers: 220031298, 220364473, 221003431, 223023603,220024412
- * Student Names  : NA Pesa  , LM Mosoetsa, D Hlalele, A Mbonambi, MP Lephole
- * Question: Authentication / Login Screen
- */
+ * Student Numbers: XXXXXXXXX, XXXXXXXXX, XXXXXXXXX, XXXXXXXXX, XXXXXXXXX
+ * Student Names  : [Group Member Names Here]
+ * Question: Authentication / Login Screen
+ */
 
 // ============================================================
 // views/auth/login_screen.dart
 // The login screen. Uses Provider to watch AuthViewModel.
 // After successful login, routes user based on their role.
 // ============================================================
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  // ─── Local UI state────────────────────────────────────────
+  // ─── Local UI state ────────────────────────────────────────
   bool _passwordVisible = false;
 
   @override
@@ -40,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  // ─── Login action──────────────────────────────────────────
+  // ─── Login action ──────────────────────────────────────────
   Future<void> _handleLogin() async {
     // Validate all form fields first
     if (!_formKey.currentState!.validate()) return;
@@ -90,7 +91,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 // to REBUILD whenever the error message changes
                 Consumer<AuthViewModel>(
                   builder: (context, authVM, child) {
-                    if (authVM.errorMessage == null) return const SizedBox.shrink();
+                    if (authVM.errorMessage == null)
+                      return const SizedBox.shrink();
                     return Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
@@ -141,7 +143,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   'Contact the IT Department if you do not have an account.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey.shade600,
+                  ),
                 ),
               ],
             ),
@@ -151,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // ─── Header Widget─────────────────────────────────────────
+  // ─── Header Widget ─────────────────────────────────────────
   Widget _buildHeader() {
     return Column(
       children: [
@@ -182,13 +187,16 @@ class _LoginScreenState extends State<LoginScreen> {
         const SizedBox(height: 8),
         Text(
           'Central University of Technology',
-          style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.grey.shade600,
+          ),
         ),
       ],
     );
   }
 
-  // ─── Login Form Widget─────────────────────────────────────
+  // ─── Login Form Widget ─────────────────────────────────────
   Widget _buildLoginForm() {
     return Form(
       key: _formKey,
@@ -215,9 +223,8 @@ class _LoginScreenState extends State<LoginScreen> {
               if (value == null || value.trim().isEmpty) {
                 return 'Email is required';
               }
-              if (!RegExp(
-                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-              ).hasMatch(value.trim())) {
+              if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                  .hasMatch(value.trim())) {
                 return 'Please enter a valid email address';
               }
               return null;

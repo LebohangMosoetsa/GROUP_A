@@ -1,8 +1,7 @@
-/**
- * Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
- * Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
- * Question: Application ViewModel
- */
+/// Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
+/// Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
+/// Question: Application ViewModel
+library;
 
 // ============================================================
 // viewmodels/application_viewmodel.dart
@@ -10,7 +9,7 @@
 // Extends ChangeNotifier — notifies the View whenever data changes.
 // ============================================================
 
-import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/application.dart';
@@ -157,15 +156,15 @@ class ApplicationViewModel extends ChangeNotifier {
   }
 
   /// Updates only the status of an application — used by Admin.
-  Future<bool> updateApplicationStatus(String applicationId, String status) async {
+  Future<bool> updateApplicationStatus(
+      String applicationId, String status) async {
     _setLoading(true);
     _clearMessages();
 
     try {
       await _supabase
           .from('applications')
-          .update({'status': status})
-          .eq('id', applicationId);
+          .update({'status': status}).eq('id', applicationId);
 
       // Update local list
       final index = _applications.indexWhere((a) => a.id == applicationId);
@@ -174,7 +173,8 @@ class ApplicationViewModel extends ChangeNotifier {
         notifyListeners();
       }
 
-      _successMessage = 'Application ${status == 'approved' ? 'approved' : 'rejected'} successfully.';
+      _successMessage =
+          'Application ${status == 'approved' ? 'approved' : 'rejected'} successfully.';
       notifyListeners();
       _setLoading(false);
       return true;
@@ -195,10 +195,7 @@ class ApplicationViewModel extends ChangeNotifier {
     _clearMessages();
 
     try {
-      await _supabase
-          .from('applications')
-          .delete()
-          .eq('id', applicationId);
+      await _supabase.from('applications').delete().eq('id', applicationId);
 
       // Remove from local list immediately (optimistic update)
       _applications.removeWhere((a) => a.id == applicationId);
@@ -221,21 +218,21 @@ class ApplicationViewModel extends ChangeNotifier {
 
   /// Uploads a supporting document to Supabase Storage.
   /// Returns the public URL of the uploaded file, or null on failure.
-  Future<String?> uploadDocument(File file, String studentId) async {
+  Future<String?> uploadDocument(
+      Uint8List fileBytes, String fileName, String studentId) async {
     _setLoading(true);
     _clearMessages();
-
     try {
-      final fileName = '${studentId}_${DateTime.now().millisecondsSinceEpoch}.pdf';
-      final path = 'documents/$fileName';
+      final storedName =
+          '${studentId}_${DateTime.now().millisecondsSinceEpoch}_$fileName';
+      final path = 'documents/$storedName';
 
       await _supabase.storage
           .from('application-documents')
-          .upload(path, file);
+          .uploadBinary(path, fileBytes);
 
-      final publicUrl = _supabase.storage
-          .from('application-documents')
-          .getPublicUrl(path);
+      final publicUrl =
+          _supabase.storage.from('application-documents').getPublicUrl(path);
 
       _setLoading(false);
       return publicUrl;

@@ -1,8 +1,7 @@
-/**
- * Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
- * Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
- * Question: Auth ViewModel
- */
+/// Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
+/// Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
+/// Question: Auth ViewModel
+library;
 
 // ============================================================
 // viewmodels/auth_viewmodel.dart
@@ -80,11 +79,8 @@ class AuthViewModel extends ChangeNotifier {
   /// Fetches the user's profile (role, name, etc.) from Supabase.
   Future<void> _loadUserProfile(String userId) async {
     try {
-      final data = await _supabase
-          .from('profiles')
-          .select()
-          .eq('id', userId)
-          .single();
+      final data =
+          await _supabase.from('profiles').select().eq('id', userId).single();
 
       _currentUser = AppUser.fromMap(data);
       notifyListeners(); // Notify all listening widgets to rebuild

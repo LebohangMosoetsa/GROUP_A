@@ -1,8 +1,7 @@
-/**
- * Student Numbers: XXXXXXXXX, XXXXXXXXX, XXXXXXXXX, XXXXXXXXX, XXXXXXXXX
- * Student Names  : [Group Member Names Here]
- * Question: Application Model
- */
+/// Student Numbers: XXXXXXXXX, XXXXXXXXX, XXXXXXXXX, XXXXXXXXX, XXXXXXXXX
+/// Student Names  : [Group Member Names Here]
+/// Question: Application Model
+library;
 
 // ============================================================
 // models/application.dart

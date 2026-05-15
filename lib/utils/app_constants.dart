@@ -1,8 +1,7 @@
-/**
- * Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
- * Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
- * Question: App Constants and Theme
- */
+/// Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
+/// Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
+/// Question: App Constants and Theme
+library;
 
 // ============================================================
 // utils/app_constants.dart

@@ -1,8 +1,7 @@
-/**
- * Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
- * Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
- * Question: Admin Dashboard Screen (Read / Update / Delete Operations)
- */
+/// Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
+/// Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
+/// Question: Admin Dashboard Screen (Read / Update / Delete Operations)
+library;
 
 // ============================================================
 // views/admin/admin_dashboard_screen.dart
@@ -30,7 +29,12 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
   // ─── Filter state ────────────────────────────────────────────
   String _filterStatus = 'All'; // 'All' | 'pending' | 'approved' | 'rejected'
 
-  final List<String> _statusFilters = ['All', 'pending', 'approved', 'rejected'];
+  final List<String> _statusFilters = [
+    'All',
+    'pending',
+    'approved',
+    'rejected'
+  ];
 
   @override
   void initState() {
@@ -78,7 +82,9 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
     );
 
     if (confirmed == true && mounted) {
-      await context.read<ApplicationViewModel>().updateApplicationStatus(appId, status);
+      await context
+          .read<ApplicationViewModel>()
+          .updateApplicationStatus(appId, status);
       if (mounted) {
         final msg = context.read<ApplicationViewModel>().successMessage;
         if (msg != null) {
@@ -89,7 +95,8 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                   ? AppTheme.approvedColor
                   : AppTheme.rejectedColor,
               behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
             ),
           );
         }
@@ -251,13 +258,17 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
             padding: const EdgeInsets.only(right: 8),
             child: FilterChip(
               label: Text(
-                filter == 'All' ? 'All' : filter.substring(0, 1).toUpperCase() + filter.substring(1),
+                filter == 'All'
+                    ? 'All'
+                    : filter.substring(0, 1).toUpperCase() +
+                        filter.substring(1),
               ),
               selected: isSelected,
               selectedColor: AppTheme.primaryColor.withOpacity(0.15),
               checkmarkColor: AppTheme.primaryColor,
               labelStyle: TextStyle(
-                color: isSelected ? AppTheme.primaryColor : Colors.grey.shade700,
+                color:
+                    isSelected ? AppTheme.primaryColor : Colors.grey.shade700,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
               onSelected: (_) => setState(() => _filterStatus = filter),
@@ -351,7 +362,8 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
               ],
               // Delete — always visible
               IconButton(
-                icon: const Icon(Icons.delete_outline_rounded, color: Colors.red),
+                icon:
+                    const Icon(Icons.delete_outline_rounded, color: Colors.red),
                 tooltip: 'Remove application',
                 onPressed: () => _deleteApplication(app.id!),
               ),
@@ -399,7 +411,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           Text(
             _filterStatus == 'All'
                 ? 'No applications submitted yet'
-                : 'No ${_filterStatus} applications',
+                : 'No $_filterStatus applications',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
@@ -435,12 +447,19 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
 
   String _formatDate(DateTime date) {
     const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
     return '${date.day} ${months[date.month - 1]} ${date.year}';
   }
 }
-
-
-

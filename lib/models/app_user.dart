@@ -1,8 +1,7 @@
-/** 
- * Studnet Numbers: 221003431, 223023603, 223064473, 220031298, 220024412
- * Student Names: D Hlalele, A Mbonambi, LM Mosoetsa, NA Pesa, MP Lephole
- * Question: AppUser Models
- */
+/// Studnet Numbers: 221003431, 223023603, 223064473, 220031298, 220024412
+/// Student Names: D Hlalele, A Mbonambi, LM Mosoetsa, NA Pesa, MP Lephole
+/// Question: AppUser Models
+library;
 
 //==============================================================================
 //model/app_user.dart

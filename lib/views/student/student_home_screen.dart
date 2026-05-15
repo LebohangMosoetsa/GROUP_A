@@ -1,8 +1,7 @@
-/**
- * Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
- * Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
- * Question: Student Home Screen (Read Operation)
- */
+/// Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
+/// Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
+/// Question: Student Home Screen (Read Operation)
+library;
 
 // ============================================================
 // views/student/student_home_screen.dart
@@ -64,7 +63,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // ─── Welcome Card ───────────────────────────────
-            _buildWelcomeCard(user?.fullName ?? 'Student', user?.studentNumber ?? ''),
+            _buildWelcomeCard(
+                user?.fullName ?? 'Student', user?.studentNumber ?? ''),
 
             const SizedBox(height: 24),
 
@@ -142,7 +142,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
             icon: const Icon(Icons.add, color: Colors.white),
             label: const Text(
               'Apply Now',
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
           );
         },
@@ -170,7 +171,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           const SizedBox(height: 8),
           Text(
             'Welcome back,',
-            style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 14),
+            style:
+                TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 14),
           ),
           Text(
             name,
@@ -235,7 +237,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               _infoRow(Icons.school_outlined, 'Level: ${app.module1Level}'),
               if (app.hasSecondModule) ...[
                 const SizedBox(height: 4),
-                _infoRow(Icons.add_box_outlined, 'Also: ${app.module2Code ?? ''}'),
+                _infoRow(
+                    Icons.add_box_outlined, 'Also: ${app.module2Code ?? ''}'),
               ],
               const SizedBox(height: 4),
               _infoRow(
@@ -324,7 +327,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         children: [
           const Icon(Icons.error_outline, color: Colors.red),
           const SizedBox(width: 12),
-          Expanded(child: Text(message, style: const TextStyle(color: Colors.red))),
+          Expanded(
+              child: Text(message, style: const TextStyle(color: Colors.red))),
         ],
       ),
     );

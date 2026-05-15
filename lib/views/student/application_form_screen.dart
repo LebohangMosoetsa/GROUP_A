@@ -14,7 +14,7 @@
 //   - File upload for supporting documents
 // ============================================================
 
-import 'dart:io';
+import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -46,7 +46,9 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
   String? _module2Code;
   bool _eligibilityConfirmed = false;
 
-  File? _selectedDocument;
+  // ─── Web-compatible file variables ──────────────────────────
+  Uint8List? _selectedFileBytes;
+  String? _selectedFileName;
   String? _existingDocumentUrl;
 
   bool get _isEditMode => widget.existingApplication != null;
@@ -68,16 +70,18 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
     }
   }
 
-  // ─── File picker ────────────────────────────────────────────
+  // ─── File picker (web-compatible) ───────────────────────────
   Future<void> _pickDocument() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['pdf'],
+      withData: true, // Required for web — loads bytes directly
     );
 
-    if (result != null && result.files.single.path != null) {
+    if (result != null && result.files.single.bytes != null) {
       setState(() {
-        _selectedDocument = File(result.files.single.path!);
+        _selectedFileBytes = result.files.single.bytes!;
+        _selectedFileName = result.files.single.name;
       });
     }
   }
@@ -110,8 +114,12 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
 
     // Upload document if a new file was selected
     String? documentUrl = _existingDocumentUrl;
-    if (_selectedDocument != null) {
-      documentUrl = await appVM.uploadDocument(_selectedDocument!, user.id);
+    if (_selectedFileBytes != null) {
+      documentUrl = await appVM.uploadDocument(
+        _selectedFileBytes!,
+        _selectedFileName!,
+        user.id,
+      );
     }
 
     final application = Application(
@@ -319,7 +327,7 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
       onChanged: (val) {
         setState(() {
           _module1Level = val;
-          _module1Code = null; // Reset module code when level changes
+          _module1Code = null;
         });
       },
       validator: (val) =>
@@ -415,8 +423,7 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
       hint: Text(
           _module2Level == null ? 'Select a level first' : 'Select a module'),
       items: modules
-          .where(
-              (m) => m != _module1Code) // Prevent selecting same module twice
+          .where((m) => m != _module1Code)
           .map((code) => DropdownMenuItem(value: code, child: Text(code)))
           .toList(),
       onChanged: _module2Level == null
@@ -445,7 +452,7 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               border: Border.all(
-                color: _selectedDocument != null
+                color: _selectedFileName != null
                     ? AppTheme.approvedColor
                     : Colors.grey.shade400,
                 width: 1.5,
@@ -457,23 +464,23 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
             child: Row(
               children: [
                 Icon(
-                  _selectedDocument != null
+                  _selectedFileName != null
                       ? Icons.check_circle_rounded
                       : Icons.upload_file_outlined,
-                  color: _selectedDocument != null
+                  color: _selectedFileName != null
                       ? AppTheme.approvedColor
                       : Colors.grey.shade500,
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    _selectedDocument != null
-                        ? _selectedDocument!.path.split('/').last
+                    _selectedFileName != null
+                        ? _selectedFileName!
                         : _existingDocumentUrl != null
                             ? 'Document already uploaded (tap to replace)'
                             : 'Tap to select PDF document',
                     style: TextStyle(
-                      color: _selectedDocument != null
+                      color: _selectedFileName != null
                           ? AppTheme.approvedColor
                           : Colors.grey.shade600,
                       fontSize: 14,

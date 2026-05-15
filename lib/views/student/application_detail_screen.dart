@@ -1,8 +1,7 @@
-/**
- * Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
- * Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
- * Question: Application Detail Screen (Read / Delete Operation)
- */
+/// Student Numbers: 223064473, 223023603, 221003431, 220031298, 220024412
+/// Student Names  : LM Mosoetsa, A Mbonambi, D Hlalele, NA Pesa, MP Lephole
+/// Question: Application Detail Screen (Read / Delete Operation)
+library;
 
 // ============================================================
 // views/student/application_detail_screen.dart
@@ -123,7 +122,8 @@ class ApplicationDetailScreen extends StatelessWidget {
                       children: [
                         _detailRow('Full Name', application.studentName),
                         _detailRow('Student Number', application.studentNumber),
-                        _detailRow('Year of Study', 'Year ${application.yearOfStudy}'),
+                        _detailRow(
+                            'Year of Study', 'Year ${application.yearOfStudy}'),
                       ],
                     ),
 
@@ -146,8 +146,10 @@ class ApplicationDetailScreen extends StatelessWidget {
                         title: 'Second Module Application',
                         icon: Icons.add_box_outlined,
                         children: [
-                          _detailRow('Academic Level', application.module2Level ?? 'N/A'),
-                          _detailRow('Module', application.module2Code ?? 'N/A'),
+                          _detailRow('Academic Level',
+                              application.module2Level ?? 'N/A'),
+                          _detailRow(
+                              'Module', application.module2Code ?? 'N/A'),
                         ],
                       ),
                     ],
@@ -213,7 +215,8 @@ class ApplicationDetailScreen extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 'This application has been reviewed and can no longer be edited or deleted.',
-                                style: TextStyle(fontSize: 13, color: Colors.blue),
+                                style:
+                                    TextStyle(fontSize: 13, color: Colors.blue),
                               ),
                             ),
                           ],
@@ -290,7 +293,8 @@ class ApplicationDetailScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(message, style: TextStyle(fontSize: 13, color: borderColor)),
+                Text(message,
+                    style: TextStyle(fontSize: 13, color: borderColor)),
               ],
             ),
           ),
@@ -368,8 +372,18 @@ class ApplicationDetailScreen extends StatelessWidget {
 
   String _formatDate(DateTime date) {
     const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
     return '${date.day} ${months[date.month - 1]} ${date.year}';
   }

@@ -18,7 +18,7 @@ A Flutter mobile application that allows students to apply for Student Assistant
 | [Name 1]  | XXXXXXXXX     | [e.g. Auth + Login Screen] |
 | [Name 2]  | XXXXXXXXX     | [e.g. Application Form] |
 | Andiswa   | 223023603     | Admin Dashboard 
-| [Name 4]  | XXXXXXXXX     | [e.g. Models + ViewModels] |
+| Dineo     | 221003431     | App User |
 | [Name 5]  | XXXXXXXXX     | [e.g. Routing + Documentation] |
 
 ---

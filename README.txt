@@ -1,18 +1,18 @@
-Student Application Management System — GROUP_A2
-Technical Programming III (TPG316C)
+# Student Application Management System — GROUP_A2
+# Technical Programming III (TPG316C)
 
-Group Members
-StudentNo Name        Contribution
+# Group Members
+# StudentNo Name        Contribution
 220024412 MP Lephole  Developed application.dart — Application model class and Supabase CRUD operations
 223064473 LM Mosoetsa Initial project setup — Flutter scaffolding, Supabase configuration, GitHub repo initialisation
 220031298 NA Pesa     Developed login_screen.dart — Login UI, form validation and Supabase authentication
 221003431 D Hlalele   Developed app_user.dart — User model class and user role/session handling
 223023603 A Mbonambi  Developed admin_dashboard_screen.dart — Admin UI, application listing and navigation, did documentation file and edited supporting files where necessary
 
-Project Overview
+# Project Overview
 The Student Application Management System is a cross-platform Flutter application that allows students to submit and track applications and administrators to review and manage them. The backend is powered by Supabase for authentication and database operations.
 
-Features
+# Features
 Supabase authentication (login & registration)
 Student dashboard — submit and track applications
 Admin dashboard — view and manage all applications
@@ -20,7 +20,7 @@ Form validation and error handling
 Real-time data updates via Supabase
 
 
-Architecture
+# Architecture
 The application follows the MVVM (Model-View-ViewModel) pattern with Provider for state management.
 lib/
 ├── models/
@@ -39,11 +39,11 @@ lib/
 │       └── admin_dashboard_screen.dart  # Admin UI 
 └── main.dart
 
-Concepts Applied (Units 1–5)
+# Concepts Applied (Units 1–5)
 UnitConceptImplementationUnit 1UI DesignFlutter widgets, responsive layoutsUnit 2MVVM & ProviderChangeNotifier, Consumer, ChangeNotifierProviderUnit 3Routing & NavigationNamed routes, role-based navigationUnit 4Form Handling & ValidationForm, GlobalKey, validator callbacksUnit 5Supabase Auth & CRUDsignIn, signUp, select, insert, update, delete
 
-Getting Started
-Prerequisites
+# Getting Started
+# Prerequisites
 Flutter SDK installed
 Supabase project set up
 
@@ -51,10 +51,10 @@ Run the app
 bashflutter pub get
 flutter run
 
-Repository
+# Repository
 github.com/LebohangMosoetsa/GROUP_A
 
-Submission
+# Submission
 Zipped project folder: GROUP_A.zip
 GitHub repository link
 PDF documentation submitted via Blackboard(ethuto)

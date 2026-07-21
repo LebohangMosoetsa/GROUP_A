@@ -1,5 +1,8 @@
-# Student Application Management System — GROUP_A2
-# Technical Programming III (TPG316C)
+## Student Application Management System
+
+## Group A2 — Technical Programming III (TPG316C)
+
+A cross-platform Flutter application that allows students to submit and track applications, while administrators review and manage them in real time. The backend is powered by Supabase for authentication and database operations.
 
 # Group Members
 # StudentNo Name        Contribution
@@ -54,7 +57,9 @@ flutter run
 # Repository
 https://github.com/LebohangMosoetsa/GROUP_A.git
 
+
 # Submission
 Zipped project folder: GROUP_A.zip
 GitHub repository link
 PDF documentation submitted via Blackboard(ethuto)
+
